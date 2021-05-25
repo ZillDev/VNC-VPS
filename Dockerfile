@@ -76,6 +76,11 @@ ENV UNAME pacat
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install --yes pulseaudio-utils
+#Chia
+RUN git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules
+RUN cd chia-blockchain
+RUN sh install.sh
+RUN sh install-gui.sh
 
 # VISIT US REXXAR.iR
 RUN export UNAME=$UNAME UID=1000 GID=1000 && \
